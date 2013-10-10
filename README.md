@@ -1,4 +1,4 @@
-acc-angular-workshop-seed
+acn-angular-workshop-seed
 =========================
 
 #Welcome!
