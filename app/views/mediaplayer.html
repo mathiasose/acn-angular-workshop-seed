@@ -2,32 +2,84 @@
 <div class="row">
     <div ng-repeat="player in mediaPlayers" class="mediaPlayerObject col-md-3 col-md-offset-1 panel panel-primary" id="player-{{ player._id }}">
         <h2 class="panel-heading">
-            <span ng-if="player.isActive">
-                <icon class="glyphicon glyphicon-thumbs-up" title="{{ player.name }} is active"></icon>
+            <icon ng-if="player.isActive" class="glyphicon glyphicon-thumbs-up" title="{{ player.name }} is active"></icon>
+            <icon ng-if="!player.isActive" class="glyphicon glyphicon-thumbs-down" title="{{ player.name }} is not active"></icon>
+            <span ng-if="!player.editMode">
+                {{ player.name }}
+                <icon class="edit glyphicon glyphicon-edit" title="edit" ng-click="edit(player)"></icon>
             </span>
-            <span ng-if="!player.isActive">
-                <icon class="glyphicon glyphicon-thumbs-down" title="{{ player.name }} is not active"></icon>
+            <span ng-if="player.editMode">
+                <input ng-model="player.name" class="input-sm">
+                <icon ng-if="player.editMode" class="save glyphicon glyphicon-save" title="save" ng-click="save(player)"></icon>
             </span>
-            {{ player.name }}
-            <icon class="glyphicon glyphicon-edit" ng-click="edit(player._id)"></icon>
         </h2>
         <div class="panel-body">
             <div class="row">
                 <div class="col-xs-3">ID</div>
-                <div class="col-xs-9">{{ player._id }}</div>
+                <div class="col-xs-9">
+                   {{ player._id }}
+                </div>
             </div>
             <div class="row">
                 <div class="col-xs-3">Created on</div>
-                <div class="col-xs-9">{{ player.created }}</div>
+                <div class="col-xs-9">
+                    {{ player.created }}
+                </div>
             </div>
             <div class="row">
                 <div class="col-xs-3">Last updated</div>
-                <div class="col-xs-9">{{ player.updated }}</div>
+                <div class="col-xs-9">
+                    {{ player.updated }}
+                </div>
             </div>
-            <div class="row">
+            <div ng-if="!player.editMode" class="row">
                 <div class="col-xs-3">Location</div>
                 <div class="col-xs-9">
                     {{ player.location.zone }} Zone, Floor {{ player.location.floor }}
+                </div>
+            </div>
+            <div ng-if="player.editMode">
+                <div class="row">
+                    <div class="col-xs-3">Zone</div>
+                    <div class="col-xs-9">
+                        <input ng-model="player.location.zone">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3">Floor</div>
+                    <div class="col-xs-9">
+                        <input ng-model="player.location.floor">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div ng-if="player.editMode" class="panel-footer">
+            <button class="btn btn-danger" ng-click="delete(player)">Delete</button>
+        </div>
+    </div>
+    <div class="mediaPlayerObject col-md-3 col-md-offset-1 panel panel-primary">
+        <h2 class="panel-heading">
+            <icon class="glyphicon glyphicon-plus"></icon>
+            <input ng-model="newPlayer.name" class="input-sm">
+            <icon class="save glyphicon glyphicon-save" title="save" ng-click="saveNew(newPlayer)"></icon>
+        </h2>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-xs-3">IP</div>
+                <div class="col-xs-9">
+                    <input ng-model="newPlayer.ip">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-3">Zone</div>
+                <div class="col-xs-9">
+                    <input ng-model="newPlayer.location.zone">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-3">Floor</div>
+                <div class="col-xs-9">
+                    <input ng-model="newPlayer.location.floor">
                 </div>
             </div>
         </div>

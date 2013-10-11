@@ -7,7 +7,8 @@
     color: red;
 }
 
-.mediaPlayerObject h2 a {
+.mediaPlayerObject h2 icon.edit, .mediaPlayerObject h2 icon.save {
     color: white;
     float: right;
+    cursor: pointer;
 }
