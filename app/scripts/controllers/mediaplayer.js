@@ -13,9 +13,10 @@ angular.module('accAngularWorkshopSeedApp')
         }
 
         $scope.delete = function(player) {
-            alert("Do you really want to delete " + player.name + "?");
-            mediaPlayerService.delete(player._id);
-            getLatest();
+            if (confirm("Do you really want to delete " + player.name + "?")) {
+                mediaPlayerService.delete(player._id);
+                getLatest();
+            }
         }
 
         $scope.save = function(player) {

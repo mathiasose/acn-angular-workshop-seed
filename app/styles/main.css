@@ -7,8 +7,9 @@
     color: red;
 }
 
-.mediaPlayerObject h2 icon.edit, .mediaPlayerObject h2 icon.save {
-    color: white;
-    float: right;
-    cursor: pointer;
+.mediaPlayerObject .panel-body .row {
+    margin-bottom: 2px;
+}
+.mediaPlayerObject .panel-body .row > div:first-child {
+    background-color: #EEEEFF;
 }
