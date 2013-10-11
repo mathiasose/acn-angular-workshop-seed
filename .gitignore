@@ -1,5 +1,7 @@
 *.iml
-.idea/*
+.idea/
+
+app/views/mediaplayer.html
 
 node_modules
 dist

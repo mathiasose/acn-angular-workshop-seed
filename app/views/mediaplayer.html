@@ -1,0 +1,35 @@
+<h1>Media players</h1>
+<div class="row">
+    <div ng-repeat="player in mediaPlayers" class="mediaPlayerObject col-md-3 col-md-offset-1 panel panel-primary" id="player-{{ player._id }}">
+        <h2 class="panel-heading">
+            <span ng-if="player.isActive">
+                <icon class="glyphicon glyphicon-thumbs-up" title="{{ player.name }} is active"></icon>
+            </span>
+            <span ng-if="!player.isActive">
+                <icon class="glyphicon glyphicon-thumbs-down" title="{{ player.name }} is not active"></icon>
+            </span>
+            {{ player.name }}
+            <icon class="glyphicon glyphicon-edit" ng-click="edit(player._id)"></icon>
+        </h2>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-xs-3">ID</div>
+                <div class="col-xs-9">{{ player._id }}</div>
+            </div>
+            <div class="row">
+                <div class="col-xs-3">Created on</div>
+                <div class="col-xs-9">{{ player.created }}</div>
+            </div>
+            <div class="row">
+                <div class="col-xs-3">Last updated</div>
+                <div class="col-xs-9">{{ player.updated }}</div>
+            </div>
+            <div class="row">
+                <div class="col-xs-3">Location</div>
+                <div class="col-xs-9">
+                    {{ player.location.zone }} Zone, Floor {{ player.location.floor }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
