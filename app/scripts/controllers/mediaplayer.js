@@ -2,11 +2,11 @@
 
 angular.module('accAngularWorkshopSeedApp')
     .controller('MediaplayerCtrl', function ($scope, $resource, mediaPlayerService) {
-        var getLatest = function(){
+        $scope.getLatest = function(){
             $scope.mediaPlayers = mediaPlayerService.readAll();
         }
 
-        getLatest();
+        $scope.getLatest();
 
         $scope.edit = function(player) {
             player.editMode = true;
@@ -15,19 +15,19 @@ angular.module('accAngularWorkshopSeedApp')
         $scope.delete = function(player) {
             if (confirm("Do you really want to delete " + player.name + "?")) {
                 mediaPlayerService.delete(player._id);
-                getLatest();
+                $scope.getLatest();
             }
         }
 
         $scope.save = function(player) {
             player.editMode = false;
             mediaPlayerService.update(player);
-            getLatest();
+            //$scope.getLatest(); // denne vil avbryte evt. andre edits som pågår
         }
 
         $scope.saveNew = function(player) {
             mediaPlayerService.create(player);
-            getLatest();
+            $scope.getLatest();
         }
 
     });

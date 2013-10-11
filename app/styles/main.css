@@ -10,6 +10,17 @@
 .mediaPlayerObject .panel-body .row {
     margin-bottom: 2px;
 }
+
+.mediaPlayerObject .panel-body .row > div {
+    line-height: 2;
+}
+
 .mediaPlayerObject .panel-body .row > div:first-child {
+    font-size: 12px;
     background-color: #EEEEFF;
+    padding: 5px 10px;
+}
+
+.mediaPlayerObject .panel-body .row > div:nth-child(2n) > span {
+    padding: 5px 0;
 }

@@ -1,6 +1,6 @@
-<h1>Media players</h1>
+<h1>Media players <button class="btn btn-sm btn-info" ng-click="getLatest()">Reload</button> </h1>
 <div class="row">
-    <div ng-repeat="player in mediaPlayers" class="mediaPlayerObject col-md-3 col-md-offset-1 panel panel-primary" id="player-{{ player._id }}">
+    <div ng-repeat="player in mediaPlayers" class="mediaPlayerObject col-sm-3 col-sm-offset-1 panel panel-primary" id="player-{{ player._id }}">
         <h2 class="panel-heading">
             <div class="row">
                 <div class="col-xs-9">
@@ -19,63 +19,53 @@
         </h2>
         <div class="panel-body">
             <div class="row">
-                <div class="col-xs-5">Created on</div>
-                <div class="col-xs-7">
-                    {{ player.created | date:'yyyy-MM-dd hh:mm' }}
+                <div class="col-xs-4">Created on</div>
+                <div class="col-xs-8">
+                    <span>{{ player.created | date:'yyyy-MM-dd hh:mm' }}</span>
                 </div>
             </div>
             <div class="row">
-                <div class="col-xs-5">Last update</div>
-                <div class="col-xs-7">
-                    {{ player.updated | date:'yyyy-MM-dd hh:mm' }}
+                <div class="col-xs-4">Last update</div>
+                <div class="col-xs-8">
+                    <span>{{ player.updated | date:'yyyy-MM-dd hh:mm' }}</span>
                 </div>
             </div>
             <div class="row">
-                <div class="col-xs-5">IP</div>
-                <div class="col-xs-7">
-                    <div ng-if="player.editMode">
-                        <input ng-model="player.ip">
-                    </div>
-                    <div ng-if="!player.editMode">
-                        {{ player.ip }}
-                    </div>
+                <div class="col-xs-4">IP</div>
+                <div class="col-xs-8">
+                    <input ng-if="player.editMode" ng-model="player.ip" class="input-sm">
+                    <span ng-if="!player.editMode">{{ player.ip }}</span>
                 </div>
             </div>
             <div class="row">
-                <div class="col-xs-5">Zone</div>
-                <div class="col-xs-7">
-                    <div ng-if="player.editMode">
-                        <input ng-model="player.location.zone">
-                    </div>
-                    <div ng-if="!player.editMode">
-                        {{ player.location.zone }}
-                    </div>
+                <div class="col-xs-4">Zone</div>
+                <div class="col-xs-8">
+                    <input ng-if="player.editMode" ng-model="player.location.zone" class="input-sm">
+                    <span ng-if="!player.editMode">{{ player.location.zone }}</span>
                 </div>
             </div>
             <div class="row">
-                <div class="col-xs-5">Floor</div>
-                <div class="col-xs-7">
-                    <div ng-if="player.editMode">
-                        <input ng-model="player.location.floor">
-                    </div>
-                    <div ng-if="!player.editMode">
-                        {{ player.location.floor }}
-                    </div>
+                <div class="col-xs-4">Floor</div>
+                <div class="col-xs-8">
+                    <input ng-if="player.editMode" ng-model="player.location.floor" class="input-sm">
+                    <span ng-if="!player.editMode">{{ player.location.floor }}</span>
                 </div>
             </div>
         </div>
         <div class="panel-footer row">
             <button title="edit" ng-if="!player.editMode" class="btn btn-primary col-xs-4" ng-click="edit(player)">
-                <icon class="edit glyphicon glyphicon-edit"></icon> Edit
+                <icon class="glyphicon glyphicon-edit"></icon> Edit
             </button>
             <button title="save" ng-if="player.editMode" class="btn btn-primary col-xs-4" ng-click="save(player)">
-                <icon class="save glyphicon glyphicon-save"></icon> Save
+                <icon class="glyphicon glyphicon-save"></icon> Save
             </button>
             <div class="col-xs-4">&nbsp;</div>
-            <button title="delete" class="btn btn-danger col-xs-4" ng-click="delete(player)">Delete</button>
+            <button title="delete" class="btn btn-danger col-xs-4" ng-click="delete(player)">
+                <icon class="glyphicon glyphicon-remove"></icon> Delete
+            </button>
         </div>
     </div>
-    <div class="mediaPlayerObject col-md-3 col-md-offset-1 panel panel-primary">
+    <div class="mediaPlayerObject col-sm-3 col-sm-offset-1 panel panel-primary">
         <h2 class="panel-heading">
             <input ng-model="newPlayer.name" class="input-sm">
         </h2>
@@ -83,25 +73,25 @@
             <div class="row">
                 <div class="col-xs-4">IP</div>
                 <div class="col-xs-8">
-                    <input ng-model="newPlayer.ip">
+                    <input ng-model="newPlayer.ip" class="input-sm">
                 </div>
             </div>
             <div class="row">
                 <div class="col-xs-4">Zone</div>
                 <div class="col-xs-8">
-                    <input ng-model="newPlayer.location.zone">
+                    <input ng-model="newPlayer.location.zone" class="input-sm">
                 </div>
             </div>
             <div class="row">
                 <div class="col-xs-4">Floor</div>
                 <div class="col-xs-8">
-                    <input ng-model="newPlayer.location.floor">
+                    <input ng-model="newPlayer.location.floor" class="input-sm">
                 </div>
             </div>
         </div>
         <div class="panel-footer row">
             <button title="save" class="btn btn-primary col-xs-12" ng-click="saveNew(newPlayer)">
-                <icon class="save glyphicon glyphicon-save"></icon> Save
+                <icon class="save glyphicon glyphicon-save"></icon> Save new
             </button>
         </div>
     </div>
