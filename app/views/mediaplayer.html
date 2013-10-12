@@ -4,12 +4,8 @@
         <h2 class="panel-heading">
             <div class="row">
                 <div class="col-xs-9">
-                    <span ng-if="!player.editMode">
-                        {{ player.name }}
-                    </span>
-                    <span ng-if="player.editMode">
-                        <input ng-model="player.name" class="input-sm">
-                    </span>
+                    <span ng-if="!player.editMode">{{ player.name }}</span>
+                    <input ng-if="player.editMode" ng-model="player.name" class="input-sm">
                 </div>
                 <div class="col-xs-1">
                     <icon ng-if="player.isActive" class="glyphicon glyphicon-thumbs-up" title="{{ player.name }} is active"></icon>
@@ -21,13 +17,13 @@
             <div class="row">
                 <div class="col-xs-4">Created on</div>
                 <div class="col-xs-8">
-                    <span>{{ player.created | date:'yyyy-MM-dd hh:mm' }}</span>
+                    <span>{{ player.created | date:'yyyy-MM-dd HH:mm' }}</span>
                 </div>
             </div>
             <div class="row">
                 <div class="col-xs-4">Last update</div>
                 <div class="col-xs-8">
-                    <span>{{ player.updated | date:'yyyy-MM-dd hh:mm' }}</span>
+                    <span>{{ player.updated | date:'yyyy-MM-dd HH:mm' }}</span>
                 </div>
             </div>
             <div class="row">

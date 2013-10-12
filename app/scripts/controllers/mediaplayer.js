@@ -22,7 +22,7 @@ angular.module('accAngularWorkshopSeedApp')
         $scope.save = function(player) {
             player.editMode = false;
             mediaPlayerService.update(player);
-            //$scope.getLatest(); // denne vil avbryte evt. andre edits som pågår
+            $scope.mediaPlayers.player = mediaPlayerService.readById(player._id);
         }
 
         $scope.saveNew = function(player) {
